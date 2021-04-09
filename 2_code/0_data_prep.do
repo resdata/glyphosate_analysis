@@ -545,7 +545,7 @@ save "$dt\fisher_comp_CRDmean_deflated.dta", replace
 	
 
 *-----------------------------------soil erodibility---------------------------*
-import delimited "hel8\nri10_extract_061914.csv", clear
+import delimited "hel8\nri_ei.csv", clear
 egen ei=rowmean(ei82-ei10)
 order ei, before (ei82)
 
@@ -559,7 +559,7 @@ keep countyfips ei_county_wm
 generate hel8=0
 replace hel8=1 if ei_county_wm>=8
 keep countyfips hel8 
-save "$dt\hel8,dta", replace //match with countyfips
+save "$dt\hel.dta", replace //match with countyfips
 
 *--------------------------------pfuel-----------------------------------------*
 import excel "pfuel\PET_PRI_GND_A_EPD2D_PTE_DPGAL_M.xls", sheet("Data 2") cellrange(A3:J309) firstrow clear
